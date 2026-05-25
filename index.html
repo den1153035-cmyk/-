@@ -46,34 +46,44 @@
         
         .nav-links a {
             color: #eee;
-            margin: 0 20px;
+            margin: 0 18px;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
         
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover { 
+            color: var(--gold); 
+            text-shadow: 0 0 8px var(--gold);
+        }
         
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('https://source.unsplash.com/random/1920x1080/?chinese-motorcycle,red') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('https://source.unsplash.com/random/1920x1080/?chinese-motorcycle,red') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
+            animation: heroZoom 20s infinite alternate;
+        }
+        
+        @keyframes heroZoom {
+            from { background-size: 100%; }
+            to { background-size: 110%; }
         }
         
         .hero-content h1 {
-            font-size: 4.8rem;
+            font-size: 5rem;
             margin-bottom: 1rem;
-            text-shadow: 0 0 25px var(--red);
+            text-shadow: 0 0 30px var(--red);
+            animation: fadeInUp 1.2s ease;
         }
         
         .subtitle {
-            font-size: 1.9rem;
+            font-size: 2rem;
             color: var(--gold);
             margin-bottom: 2.5rem;
+            animation: fadeInUp 1.5s ease;
         }
         
         .btn {
@@ -85,10 +95,11 @@
             font-size: 1.2rem;
             border: 3px solid var(--gold);
             transition: all 0.4s;
+            animation: fadeInUp 1.8s ease;
         }
         
         .btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.12) rotate(3deg);
             background: var(--gold);
             color: #000;
         }
@@ -104,68 +115,49 @@
             text-align: center;
             margin-bottom: 3rem;
             color: var(--gold);
+            position: relative;
         }
         
-        .info-grid {
+        h2::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: var(--red);
+            margin: 20px auto;
+        }
+        
+        .info-grid, .brands-grid, .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
         
-        .info-card {
+        .info-card, .brand-card {
             background: #222;
             padding: 2rem;
             border-radius: 15px;
             border: 2px solid #444;
-            transition: 0.4s;
+            transition: all 0.5s ease;
         }
         
-        .info-card:hover {
-            transform: translateY(-10px);
+        .info-card:hover, .brand-card:hover {
+            transform: translateY(-15px) scale(1.03);
             border-color: var(--red);
-        }
-        
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .brand-card {
-            background: #222;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-        
-        .brand-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 0 30px rgba(200, 16, 46, 0.5);
-        }
-        
-        .brand-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            box-shadow: 0 0 30px rgba(200, 16, 46, 0.6);
         }
         
         .gallery img {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
             border-radius: 12px;
-            transition: all 0.4s;
+            transition: all 0.4s ease;
         }
         
         .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--gold);
+            transform: scale(1.08);
+            box-shadow: 0 0 25px var(--gold);
         }
         
         footer {
@@ -173,6 +165,11 @@
             text-align: center;
             padding: 3rem;
             border-top: 3px solid var(--red);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -183,6 +180,7 @@
             <div class="nav-links">
                 <a href="index.html">Головна</a>
                 <a href="porivnyannya.html">Порівняння</a>
+                <a href="gallery.html">Галерея</a>
                 <a href="#">Каталог</a>
             </div>
         </nav>
@@ -191,95 +189,71 @@
     <section class="hero">
         <div class="hero-content">
             <h1>КИТАЙСЬКІ МОТОЦИКЛИ</h1>
-            <p class="subtitle">Сучасна потужність за розумні гроші</p>
+            <p class="subtitle">Потужність. Стиль. Доступність. 2026</p>
             <a href="porivnyannya.html" class="btn">ПОРІВНЯТИ МОДЕЛІ →</a>
         </div>
     </section>
 
-    <!-- Нова секція: Чому китайські мотоцикли -->
     <section style="background:#111;">
-        <h2>Чому обирають Китай?</h2>
+        <h2>Чому Китайські Мотоцикли?</h2>
         <div class="info-grid">
             <div class="info-card">
-                <h3>✅ Якість зросла</h3>
-                <p>Сьогодні китайські бренди (CFMoto, Zongshen, Voge, Loncin) активно співпрацюють з європейськими та японськими інженерами. Багато моделей не поступаються японцям за надійністю.</p>
+                <h3>✅ Якість на рівні</h3>
+                <p>Сучасні китайські мотоцикли використовують компоненти Bosch, Continental, KYB та Brembo.</p>
             </div>
             <div class="info-card">
-                <h3>🔥 Доступна потужність</h3>
-                <p>За ціну середнього японського 250cc ви можете взяти китайський 450–600cc з сучасною електронікою.</p>
+                <h3>🔥 Краще співвідношення ціна/якість</h3>
+                <p>За 6000–9000$ ви отримуєте 450–800cc мотоцикл з сучасною електронікою.</p>
             </div>
             <div class="info-card">
-                <h3>🌍 Світове визнання</h3>
-                <p>CFMoto — офіційний партнер KTM. Їхні мотоцикли використовуються в Європі, США та Австралії.</p>
+                <h3>🌍 Глобальне визнання</h3>
+                <p>CFMoto — партнер KTM. Voge та Zongshen активно продаються в Європі та США.</p>
             </div>
         </div>
     </section>
 
-    <!-- Популярні бренди -->
     <section>
-        <h2>Популярні Бренди</h2>
+        <h2>Популярні Бренди 2026</h2>
         <div class="brands-grid">
             <div class="brand-card">
-                <img src="https://source.unsplash.com/random/600x400/?cfmoto,motorcycle" alt="CFMoto">
+                <img src="https://source.unsplash.com/random/600x400/?cfmoto" alt="CFMoto">
                 <div style="padding:1.5rem;">
                     <h3>CFMoto</h3>
-                    <p><strong>Найпопулярніший бренд в Україні.</strong> Відомі спортивними та туристичними моделями. Партнер KTM.</p>
+                    <p>Лідер ринку. Відомі моделями 450SS, 675SS, 800MT.</p>
                 </div>
             </div>
             <div class="brand-card">
                 <img src="https://source.unsplash.com/random/600x400/?zongshen" alt="Zongshen">
                 <div style="padding:1.5rem;">
                     <h3>Zongshen</h3>
-                    <p>Один з найбільших виробників у Китаї. Сильні в сегменті adventure та cruiser.</p>
+                    <p>Сильні adventure моделі RX3 та RX4.</p>
                 </div>
             </div>
             <div class="brand-card">
-                <img src="https://source.unsplash.com/random/600x400/?voge,motorcycle" alt="Voge">
+                <img src="https://source.unsplash.com/random/600x400/?voge" alt="Voge">
                 <div style="padding:1.5rem;">
                     <h3>Voge (Loncin)</h3>
-                    <p>Преміум-підрозділ Loncin. Дуже якісні adventure та roadster мотоцикли.</p>
+                    <p>Преміум сегмент. Відмінна якість збирання.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Цікава інформація -->
     <section style="background:#111;">
-        <h2>Цікаві Факти</h2>
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>🏆 Факт №1</h4>
-                <p>CFMoto 800MT у 2023–2025 роках отримав численні нагороди як найкращий adventure мотоцикл у своєму класі.</p>
-            </div>
-            <div class="info-card">
-                <h4>⚡ Факт №2</h4>
-                <p>Китайські заводи виробляють понад 70% всіх мотоциклів у світі. Багато «японських» і «європейських» деталей роблять саме в Китаї.</p>
-            </div>
-            <div class="info-card">
-                <h4>💰 Факт №3</h4>
-                <p>Середня ціна нового китайського мотоцикла 400–600cc — 5500–8500$. Це в 1.5–2 рази дешевше за аналоги від Honda чи Yamaha.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Галерея -->
-    <section>
-        <h2>Галерея Китайських Мотоциклів</h2>
-        <div class="gallery">
+        <h2>Галерея Мотоциклів</h2>
+        <p style="text-align:center; margin-bottom:2rem; font-size:1.2rem;">Натисніть, щоб перейти до повної галереї</p>
+        <div class="gallery" style="cursor:pointer;" onclick="window.location.href='gallery.html'">
             <img src="https://source.unsplash.com/random/600x400/?cfmoto,red" alt="CFMoto 450SS">
-            <img src="https://source.unsplash.com/random/600x400/?adventure,motorcycle" alt="Adventure мотоцикл">
-            <img src="https://source.unsplash.com/random/600x400/?sportbike,blue" alt="Спортивний мотоцикл">
-            <img src="https://source.unsplash.com/random/600x400/?zongshen,black" alt="Zongshen RX4">
-            <img src="https://source.unsplash.com/random/600x400/?motorcycle,night" alt="Мотоцикл вночі">
-            <img src="https://source.unsplash.com/random/600x400/?voge,motorcycle" alt="Voge 525DS">
+            <img src="https://source.unsplash.com/random/600x400/?adventure,motorcycle" alt="Zongshen RX4">
+            <img src="https://source.unsplash.com/random/600x400/?sportbike,blue" alt="CFMoto 675SS">
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+            <a href="gallery.html" class="btn" style="background:var(--gold); color:#000;">Відкрити повну галерею →</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 DragonRider — Кращі китайські мотоцикли в Україні</p>
-        <p style="margin-top: 10px;">
-            <a href="porivnyannya.html" style="color:var(--gold);">→ Перейти до порівняння моделей</a>
-        </p>
+        <p>&copy; 2026 DragonRider — Китайські мотоцикли в Україні</p>
     </footer>
 </body>
 </html>

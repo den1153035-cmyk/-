@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Порівняння — DragonRider</title>
+    <title>Галерея — DragonRider</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Press+Start+2P&display=swap');
         
-        :root {
-            --red: #C8102E;
-            --gold: #FFCC00;
-        }
+        :root { --red: #C8102E; --gold: #FFCC00; }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            background: #0a0a0a;
             color: #eee;
         }
         
@@ -37,93 +34,66 @@
             align-items: center;
         }
         
-        .logo {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.8rem;
-            color: var(--gold);
-        }
+        .logo { font-family: 'Press Start 2P', cursive; font-size: 1.8rem; color: var(--gold); }
         
         .nav-links a {
             color: #eee;
-            margin: 0 20px;
+            margin: 0 18px;
             text-decoration: none;
-            font-weight: 500;
         }
         
         .nav-links a:hover { color: var(--gold); }
         
-        section {
+        .gallery-container {
             padding: 120px 5% 80px;
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
         
-        h2 {
-            font-size: 3rem;
+        h1 {
             text-align: center;
+            font-size: 3.5rem;
             margin-bottom: 3rem;
             color: var(--gold);
         }
         
-        .model-pair {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-bottom: 4rem;
-            border: 2px solid var(--red);
-            position: relative;
-        }
-        
-        .comparison {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.5rem;
         }
         
-        .bike {
-            text-align: center;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid #333;
         }
         
-        .bike img {
+        .gallery-item img {
             width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-            transition: all 0.5s;
+            height: 320px;
+            object-fit: cover;
+            transition: all 0.6s ease;
         }
         
-        .bike:hover img {
-            transform: scale(1.1) rotate(4deg);
+        .gallery-item:hover img {
+            transform: scale(1.12);
         }
         
-        .spec-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            background: #222;
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 1.5rem 1rem 1rem;
+            transform: translateY(40px);
+            transition: all 0.4s;
         }
         
-        .spec-table td {
-            padding: 12px;
-            border-bottom: 1px solid #444;
-        }
-        
-        .spec-table tr td:first-child {
-            font-weight: bold;
-            color: var(--gold);
-        }
-        
-        .tips {
-            background: #111;
-            padding: 3rem;
-            border-radius: 20px;
-            border: 2px solid var(--gold);
-        }
-        
-        .tip-card {
-            background: #222;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -134,100 +104,39 @@
             <div class="nav-links">
                 <a href="index.html">Головна</a>
                 <a href="porivnyannya.html">Порівняння</a>
-                <a href="#">Каталог</a>
+                <a href="gallery.html">Галерея</a>
             </div>
         </nav>
     </header>
 
-    <section>
-        <h2>Порівняння Моделей</h2>
-        
-        <!-- CFMoto -->
-        <div class="model-pair">
-            <h3 style="text-align:center; margin-bottom:2rem; color:var(--gold);">CFMoto — Спортбайки</h3>
-            <div class="comparison">
-                <div class="bike">
-                    <h4>CFMoto 450SS</h4>
-                    <img src="https://source.unsplash.com/random/500x300/?sportbike,red" alt="450SS">
-                    <table class="spec-table">
-                        <tr><td>Двигун</td><td>449cc</td></tr>
-                        <tr><td>Потужність</td><td>51 к.с.</td></tr>
-                        <tr><td>Вага</td><td>165 кг</td></tr>
-                        <tr><td>Ціна</td><td>~$5,700</td></tr>
-                    </table>
-                </div>
-                <div class="bike">
-                    <h4>CFMoto 675SS</h4>
-                    <img src="https://source.unsplash.com/random/500x300/?sportbike,blue" alt="675SS">
-                    <table class="spec-table">
-                        <tr><td>Двигун</td><td>675cc</td></tr>
-                        <tr><td>Потужність</td><td>95 к.с.</td></tr>
-                        <tr><td>Вага</td><td>185 кг</td></tr>
-                        <tr><td>Ціна</td><td>~$8,000</td></tr>
-                    </table>
-                </div>
+    <div class="gallery-container">
+        <h1>Галерея Китайських Мотоциклів</h1>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/800x600/?cfmoto,red" alt="CFMoto 450SS">
+                <div class="overlay"><h3>CFMoto 450SS</h3><p>Спортивний фаворит</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/800x600/?cfmoto,blue" alt="CFMoto 675SS">
+                <div class="overlay"><h3>CFMoto 675SS</h3><p>Потужний 3-циліндровий</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/800x600/?zongshen" alt="Zongshen RX4">
+                <div class="overlay"><h3>Zongshen RX4</h3><p>Adventure для подорожей</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/800x600/?voge" alt="Voge 525DS">
+                <div class="overlay"><h3>Voge 525DS</h3><p>Преміум adventure</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/800x600/?motorcycle,night" alt="Нічний мото">
+                <div class="overlay"><h3>Нічний стиль</h3><p>CFMoto в місті</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/random/800x600/?adventure,motorcycle" alt="Adventure">
+                <div class="overlay"><h3>Пригоди на дорозі</h3></div>
             </div>
         </div>
-
-        <!-- Zongshen -->
-        <div class="model-pair">
-            <h3 style="text-align:center; margin-bottom:2rem; color:var(--gold);">Zongshen — Adventure</h3>
-            <div class="comparison">
-                <div class="bike">
-                    <h4>Zongshen RX3</h4>
-                    <img src="https://source.unsplash.com/random/500x300/?adventure,motorcycle" alt="RX3">
-                    <table class="spec-table">
-                        <tr><td>Двигун</td><td>250cc</td></tr>
-                        <tr><td>Потужність</td><td>25 к.с.</td></tr>
-                        <tr><td>Тип</td><td>Adventure</td></tr>
-                        <tr><td>Ціна</td><td>~$3,500</td></tr>
-                    </table>
-                </div>
-                <div class="bike">
-                    <h4>Zongshen RX4</h4>
-                    <img src="https://source.unsplash.com/random/500x300/?adventure,motorcycle,black" alt="RX4">
-                    <table class="spec-table">
-                        <tr><td>Двигун</td><td>450cc</td></tr>
-                        <tr><td>Потужність</td><td>45 к.с.</td></tr>
-                        <tr><td>Тип</td><td>Adventure</td></tr>
-                        <tr><td>Ціна</td><td>~$5,200</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="tips">
-        <h2 style="text-align:center; margin-bottom:2.5rem;">Поради для Початківців</h2>
-        
-        <div class="tip-card">
-            <h4>1. Почніть з малого</h4>
-            <p>Для першого мотоцикла обирайте 250–400cc. Вони легші, простіші в керуванні та менш страшні для новачків.</p>
-        </div>
-        
-        <div class="tip-card">
-            <h4>2. Захист понад усе</h4>
-            <p>Шолом, куртка з захистом, рукавиці, мотоштани та черевики — обов’язково! Не економте на екіпіровці.</p>
-        </div>
-        
-        <div class="tip-card">
-            <h4>3. Навчіться правильно гальмувати</h4>
-            <p>Переднє гальмо — основне (70%), заднє — допоміжне. Тренуйтеся на майданчику.</p>
-        </div>
-        
-        <div class="tip-card">
-            <h4>4. Регулярне обслуговування</h4>
-            <p>Китайські мотоцикли надійні, але потребують вчасної заміни масла, перевірки ланцюга та гальм.</p>
-        </div>
-        
-        <div class="tip-card">
-            <h4>5. Не поспішайте</h4>
-            <p>Перші 6–12 місяців їздьте обережно. Досвід приходить з часом.</p>
-        </div>
-    </section>
-
-    <footer style="text-align:center; padding:3rem; background:#000;">
-        <p>Повернутися на <a href="index.html" style="color:var(--gold);">Головну сторінку</a></p>
-    </footer>
+    </div>
 </body>
 </html>
